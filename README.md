@@ -94,7 +94,7 @@ desarrollarán por separado los métodos principales
 ``` python
 # Este código no es ejecutable
 def append(self, value) -> None:
-    new_node =self.Node(value)
+    new_node = self.Node(value)
 
     if len(self) == 0:
         self.__first = new_node
