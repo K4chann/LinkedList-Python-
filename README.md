@@ -1,24 +1,3 @@
----
-jupyter:
-  kernelspec:
-    display_name: Python 3
-    language: python
-    name: python3
-  language_info:
-    codemirror_mode:
-      name: ipython
-      version: 3
-    file_extension: .py
-    mimetype: text/x-python
-    name: python
-    nbconvert_exporter: python
-    pygments_lexer: ipython3
-    version: 3.10.11
-  nbformat: 4
-  nbformat_minor: 2
----
-
-::: {.cell .markdown}
 ### LinkedList
 
 #### Introducción
@@ -82,9 +61,9 @@ algunas ocasiones, también a su Nodo anterior. En este caso,
 desarrollaremos una lista simplemente encadenada sin Nodo final, es
 decir, solo hay una conexión entre un Nodo y su siguiente, y obviamos el
 Nodo final, solo poseemos el primer Nodo.
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 class LinkedList:
@@ -101,9 +80,9 @@ class LinkedList:
     def __len__(self):
         return self.__len
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Esta sería la forma báscia y general de una LinkedList. Si quisieramos
 una DoubleLinkedList basta con añadir un atributo `self.__previous_node`
 a la clase Node.
@@ -115,9 +94,9 @@ que tendremos que definirlos nosotros mismos debido a la diferencia de
 acceso a sus elementos que existe entre ambas.A continuación, se
 desarrollarán por separado los métodos principales
 `LinkedList.append()`, `LinkedList.remove()` y `LinkedList.contains()`.
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def append(self, value) -> None:
@@ -136,9 +115,9 @@ def append(self, value) -> None:
     
     self.__len += 1
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Lo que se hace aquí es empezar desde el primer nodo avanzando hacia su
 siguiente, esto siempre y cuando `next_node != None`, pues si esto no
 ocurre, significaría que hemos llegado al final de la LinkedList, y como
@@ -147,9 +126,9 @@ dicho valor) como su siguiente.
 
 Si se tiene un atributo en la lista encadenada para referenciar al
 último Nodo, esto sería mucho más simple:
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def append(self, value) -> None:
@@ -164,17 +143,17 @@ def append(self, value) -> None:
     
     self.__len += 1
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 [Operación
 ilustrada](https://media.geeksforgeeks.org/wp-content/uploads/20240222162837/Insertion-at-the-End-of-Singly-Linked-List.webp)
 
 Vamos a completar el código base de LinkedList planteado al principio,
 resultando de la siguiente manera:
-:::
 
-::: {.cell .code execution_count="4"}
+
+ {.cell .code execution_count="4"}
 ``` python
 class LinkedList:
 
@@ -214,13 +193,13 @@ if __name__ == "__main__":
     
     print("Longitud de la lista:", len(l))
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 En el caso del método remove, resultaría en el siguiente código:
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def remove(self, value) -> None:
@@ -248,9 +227,9 @@ def remove(self, value) -> None:
         
         self.__len -= 1
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Como se peude apreciar, el método para eliminar un elemento es algo más
 complejo que el de insertar elementos al final. Básicamente, lo que se
 está haciendo es recorrer la lista con ayuda de dos Nodos.
@@ -272,14 +251,14 @@ eliminar (está contenido en la lista) o no.
 
 [Operación
 ilustrada](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/05/Linkedlist_deletion.png)
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Ahora tenemos los métodos mínimos necesarios para poder inicializar una
 LinkedList, añadámoslo al código principal.
-:::
 
-::: {.cell .code execution_count="14"}
+
+ {.cell .code execution_count="14"}
 ``` python
 class LinkedList:
 
@@ -350,17 +329,17 @@ if __name__ == "__main__":
     print("Longitud al eliminar 5 de los elementos:", len(l))
 ```
 
-::: {.output .stream .stdout}
+ {.output .stream .stdout}
     Longitud al insertar 10 elementos: 10
     Longitud al eliminar 5 de los elementos: 5
-:::
-:::
 
-::: {.cell .markdown}
+
+
+ {.cell .markdown}
 Por último, el método contains:
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def contains(self, value) -> bool:
@@ -371,9 +350,9 @@ def contains(self, value) -> bool:
 
     return current is not None
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Este método es el más sencillo de todos, pues basta con recorrer todos
 los elementos, y en caso de salir del bucle con `current != None`
 significaría que el Nodo sí está contenido en la LinkedList, en caso
@@ -381,21 +360,21 @@ contrario no lo estará.
 
 Si se quisiera usar el operador `in`, necesitaríamos sobrecargar dicho
 operador, es decir, el método mágico `__contains__()`.
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def __contains__(self, value) -> bool:
     return self.contains(value)
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Probremos todos los métodos en la base del código:
-:::
 
-::: {.cell .code execution_count="20"}
+
+ {.cell .code execution_count="20"}
 ``` python
 class LinkedList:
 
@@ -485,7 +464,7 @@ if __name__ == "__main__":
     print("Probando el operador IN con el valor 5:", 5 in l)
 ```
 
-::: {.output .stream .stdout}
+ {.output .stream .stdout}
     Longitud al insertar 10 elementos: 10
     Longitud al eliminar 5 de los elementos: 5
     El valor 0 está contenido: False
@@ -499,10 +478,10 @@ if __name__ == "__main__":
     El valor 8 está contenido: True
     El valor 9 está contenido: True
     Probando el operador IN con el valor 5: True
-:::
-:::
 
-::: {.cell .markdown}
+
+
+ {.cell .markdown}
 Ahora se nos presenta un inconveniente, y es que con las listas simples
 podemos imprimir en pantalla su contenido, arreglemos esto haciendo la
 clase LinkedList iterable y definiendo el método mágico `__str__()`. La
@@ -510,9 +489,9 @@ hacemos iterable para además de poder recorrer sus elementos con un
 bucle `for`, que el método `__string()__` pueda usar esta propiedad y
 formar la string. Si tomamos el código base, resulta de la siguiente
 manera:
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 class LinkedList:
@@ -545,13 +524,13 @@ class LinkedList:
     def __str__(self):
         return f"[{', '.join(str(item) for item in self)}]"
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Ahora sí que hemos formado una LinkedList completamente funcional:
-:::
 
-::: {.cell .code execution_count="18"}
+
+ {.cell .code execution_count="18"}
 ``` python
 class LinkedList:
 
@@ -648,15 +627,15 @@ if __name__ == "__main__":
     print(l)
 ```
 
-::: {.output .stream .stdout}
+ {.output .stream .stdout}
     Longitud al insertar 10 elementos: 10
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     Longitud al eliminar 5 elementos: 5
     [5, 6, 7, 8, 9]
-:::
-:::
 
-::: {.cell .markdown}
+
+
+ {.cell .markdown}
 #### Métodos avanzados
 
 Otros métodos que se podrían desarrollar son `get()`, `ìnsert()` y
@@ -668,9 +647,9 @@ Empecemos por el método para optener el elemento en una determinada
 posición. Aunque anteriormente se dijo que los índices no existen como
 tal en las listas encadenadas, sí que se puede obtener el valor numérico
 de la posición del puntero de elementos (Nodo current):
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def get(self, index) -> any:
@@ -687,9 +666,9 @@ def get(self, index) -> any:
 
     return current.value 
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Lo que se hace es simplemente recorrer los elementos de la lista y
 contando los cambios de puntero que vamos haciendo. Entiéndase por
 cambio de puntero por la operación `current= current.next`. Cuando el
@@ -702,25 +681,25 @@ retornando el valor None por defecto o lanzando una excepción
 
 A continuación, se desarrolla la sobrecarga del operardor de acceso a
 elementos, equivalente a `list[index]` con las listas simples.
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def __getitem__(self, index) -> any:
     return self.get(index)
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Por razones obvias, basta con llamar al método definido anteriormente
 pasándole el índice solicitado.
 
 Sigamos desarrollando el resto de métodos, ahora vamos con el método
 `insert()`:
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def insert(self, index, value) -> None:
@@ -747,9 +726,9 @@ def insert(self, index, value) -> None:
     
     self.__len += 1
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 [Operación
 ilustrada](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist_insert_middle.png)
 
@@ -758,14 +737,14 @@ valor numérico del puntero para localizar la posición en la que hay que
 insertar el nuevo elemento. Cuando dicho valor es igual a `index - 1`,
 tendremos que situar el nuevo elemento entre el Nodo `previous` y
 `current`.
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Seguidamente, el método replace, que no es más que una modificación del
 método `get()`, donde una vez encontrado el Nodo, se actualiza su valor:
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def replace(self, index, value) -> any:
@@ -782,33 +761,33 @@ def replace(self, index, value) -> any:
     
     current.value = value
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 [Operación
 ilustrada](https://www.w3resource.com/w3r_images/java-collection-linked-list-image-exercise-26.svg)
 
 Por último, sobrecargaremos el operador que nos permita modificar un
 elemento. Para ello, simplemente llamamos a este método que acabamos de
 desarrollar:
-:::
 
-::: {.cell .code}
+
+ 
 ``` python
 # Este código no es ejecutable
 def __setitem__(self, index, value) -> None:
     return self.replace(index, value)
 ```
-:::
 
-::: {.cell .markdown}
+
+ {.cell .markdown}
 Ahora nuestra lista encadenada es mucho más avanzada, y prácticamente
 tendría el mismo funcionamiento que las listas simples. El único cambio
 es el modo en que se realizan sus operaciones de búsqueda, así como la
 manera en la que sus elementos se buscan en memoria.
-:::
 
-::: {.cell .code execution_count="13"}
+
+ {.cell .code execution_count="13"}
 ``` python
 class LinkedList:
 
@@ -968,7 +947,7 @@ if __name__ == "__main__":
     print("Lista tras cambiar los 5 primeros elementos a valor -1 mediante el operador '[]':", l, sep="\n")
 ```
 
-::: {.output .stream .stdout}
+ {.output .stream .stdout}
     Longitud al insertar 10 elementos: 10
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     Elemento en la posición 0: 0
@@ -983,10 +962,7 @@ if __name__ == "__main__":
     Elemento en la posición 4 mediante el operador '[]': 4
     Lista tras cambiar los 5 primeros elementos a valor -1 mediante el operador '[]':
     [-1, -1, -1, -1, -1, 5, 6, 7, 8, 9]
-:::
-:::
 
-::: {.cell .markdown}
 #### Orden de los elementos
 
 #### ¿Que pasa si necesitamos que los elementos estén ordenados?
@@ -1005,9 +981,9 @@ la lista, y no en todo momento, pero es una opción presente.
 Si no queremos complicarnos mucho, y solo necesitamos recorrer la lista
 en orden indicado, podemos usar al función `built-in` en Python
 `sorted(iterable, key=key, reverse=reverse)` de la siguiente manera.
-:::
 
-::: {.cell .code execution_count="12"}
+
+ {.cell .code execution_count="12"}
 ``` python
 l = LinkedList()
 
@@ -1021,8 +997,8 @@ l = sorted(l)
 print("Después de ordenar", l)
 ```
 
-::: {.output .stream .stdout}
+ {.output .stream .stdout}
     Antes de ordenar: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
     Después de ordenar [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-:::
-:::
+
+
