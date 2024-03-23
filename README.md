@@ -1,6 +1,3 @@
-### 📫 How to reach me:
-[CALP Discord Server](https://discord.gg/JBQknmBxA9) or [send a message to K4#2381 on Discord](https://discord.com/users/349623600124526602)
-
 ### LinkedList
 
 #### Introducción
@@ -934,3 +931,6 @@ print("Después de ordenar", l)
     Antes de ordenar: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
     Después de ordenar [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
+### 📫 How to reach me:
+[CALP Discord Server](https://discord.gg/JBQknmBxA9) or [send a message to K4#2381 on Discord](https://discord.com/users/349623600124526602)
