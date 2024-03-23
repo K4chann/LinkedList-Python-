@@ -208,7 +208,7 @@ def remove(self, value) -> None:
         else:
             return
         
-        self.__len -= 1
+    self.__len -= 1
 ```
 
 Como se peude apreciar, el método para eliminar un elemento es algo más
