@@ -14,8 +14,8 @@ los índices, por lo que el acceso a sus elementos es de una complejidad
 algorítmica de O(1), ya que basta con sumarle a la posición inicial de
 la lista, que la tenemos, el índice del que obtener el elemento.
 
-En las listas encadenadas esto no es posible, pues su pricipio es la no
-contiguidad de sus elementos en memoria, es decir, un elemento puede
+En las listas encadenadas esto no es posible, pues su principio es la no
+contigüidad de sus elementos en memoria, es decir, un elemento puede
 estar en Las Palmas de Gran Canaria y el siguiente en Maspalomas, hay
 muchas otras cosas entre ellos, pero siempre se conectan y es posible
 accederse a todos ellos.
