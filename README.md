@@ -24,7 +24,7 @@ Sus modos de acceso también difieren, pues si bien en las listas simples
 no me hace falta posicionarme en ningún elemento para ir a otro, en las
 listas encadenadas esto es totalmente necesario. Tengo un NODO de
 comienzo, a partir del cual voy buscando el siguiente NODO y así
-sucesivamente, comparable a las cintas de readiocasette, en las que la
+sucesivamente, comparable a las cintas de radio cassette, en las que la
 parte visible (reproducible en el caso de las cintas) viene dada por un
 puntero.
 
