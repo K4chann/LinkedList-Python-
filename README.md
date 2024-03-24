@@ -3,8 +3,11 @@
 #### Introducción
 
 Una LinkedList o lista encadenada es una estructurda de datos usada para
-almacenar cualquier objeto en memoria. Puede parecer que haga lo mismo
-que una lista simple de Python, pero tiene varias diferencias.
+almacenar cualquier objeto en memoria con la posibilidad de crecer
+dinámicamente.
+
+Puede parecer que haga lo mismo que una lista simple de Python, pero
+tiene varias diferencias.
 
 #### LinkedList vs Lista simple
 
@@ -12,7 +15,7 @@ En Python, las listas simples guardan todos sus elementos de manera que
 son contiguos unos de otros en memoria. Para acceder a ellos, se usan
 los índices, por lo que el acceso a sus elementos es de una complejidad
 algorítmica de O(1), ya que basta con sumarle a la posición inicial de
-la lista, que la tenemos, el índice del que obtener el elemento.
+la lista el índice requerido.
 
 En las listas encadenadas esto no es posible, pues su principio es la no
 contigüidad de sus elementos en memoria, es decir, un elemento puede
@@ -21,46 +24,67 @@ muchas otras cosas entre ellos, pero siempre se conectan y es posible
 accederse a todos ellos.
 
 Sus modos de acceso también difieren, pues si bien en las listas simples
-no me hace falta posicionarme en ningún elemento para ir a otro, en las
-listas encadenadas esto es totalmente necesario. Tengo un NODO de
-comienzo, a partir del cual voy buscando el siguiente NODO y así
-sucesivamente, comparable a las cintas de radio cassette, en las que la
-parte visible (reproducible en el caso de las cintas) viene dada por un
-puntero.
+es necesario posicionarme en ningún elemento para ir a otro, en las
+listas encadenadas esto es totalmente necesario. Tengo un **nodo** de
+comienzo (head), a partir del cual voy buscando el siguiente **nodo** y
+así sucesivamente, comparable a las cintas de radio cassette, en las que
+la parte visible (reproducible en el caso de las cintas) viene dada por
+un puntero.
+
+#### Casos de uso
 
 Por último, cabe destacar que dependiendo del caso de uso, un tipo de
-lista puede llegar a ser mejor opción que la otra. En el caso de las
-listas simples, si nuestra intención es insertar elementos entre otros y
-eliminar elementos de manera muy frecuente, vamos a experimentar
-retrasos en el tiempo de ejecución, pues para eliminar un elemento
-distinto del final, es necesario mover todos los elementos posteriores a
-él una posición hacía atrás, esto se hace para tapar los huecos entre
-elementos. Por otro lado, este es el perfecto caso en el que usar
-LinkedList, no es necesario reordenar los elementos al insertar o
-extraer.
+lista es más conveniente que la otra.
+
+En el caso de las listas simples, si nuestra intención es insertar
+elementos entre otros y eliminar elementos de manera muy frecuente,
+vamos a experimentar retrasos en el tiempo de ejecución, pues para
+eliminar un elemento distinto del final, es necesario mover todos los
+elementos posteriores a él una posición hacía atrás, esto se hace para
+tapar los huecos entre elementos. Por otro lado, este es el perfecto
+caso en el que usar LinkedList, no es necesario reordenar los elementos
+al insertar o extraer.
 
 Sin embargo, si se quieren insertar elementos siempre al final, es mucho
 mejor usar una lista simple, ya que solamente se hace un cáluclo de
 direcciones con la dirección de comienzo y el tamaño de la lista. En el
 caso de la LinkedList, es necesario recorrer todos y cada uno de los
 elementos hasta llegar al final, aunque esto se podría solucionar
-teniendo una referencia al último Nodo.
+teniendo una referencia al último **nodo**.
+
+#### En resumen:
+
+##### ¿Cuándo usar LinkedList?
+
+-   Alta cantidad de inserciones en posiciones distintas de la última
+
+-   Alta cantidad de extracciones
+
+-   Baja o nula demanda de elementos por índices
+
+##### ¿Cuándo usar listas simples?
+
+-   Alta cantidad de inserciones en la última posición
+
+-   Baja cantidad de extracciones
+
+-   Alta demanda de elementos por índices
 
 #### Estructura de una LinkedList
 
 Este tipo de listas secuenciales tiene los siguientes elementos:
 
--   Nodo pricipal o primer nodo
+-   Nodo pricipal o primer **nodo**
 -   Nodo final en algunas ocasiones
 -   Longitud
--   Contiene Nodos, y estos son los que almacenan los valores
+-   Contiene **nodos**, y estos son los que almacenan los valores
 
 Como en estas listas no existe en sí los índices como se conocen en las
-listas simples, cada Nodo tiene referencia a su Nodo siguiente, y en
-algunas ocasiones, también a su Nodo anterior. En este caso,
-desarrollaremos una lista simplemente encadenada sin Nodo final, es
-decir, solo hay una conexión entre un Nodo y su siguiente, y obviamos el
-Nodo final, solo poseemos el primer Nodo.
+listas simples, cada nodo tiene referencia a su nodo siguiente, y en
+algunas ocasiones, también a su nodo anterior. En este caso,
+desarrollaremos una lista simplemente encadenada sin nodo final, es
+decir, solo hay una conexión entre un nodo y su siguiente, y obviamos el
+nodo final, solo poseemos el primer nodo.
 
 ``` python
 # Este código no es ejecutable
@@ -75,7 +99,7 @@ class LinkedList:
         self.__first = None
         self.__len = 0
     
-    def __len__(self):
+    def __len__(self) -> int:
         return self.__len
 ```
 
@@ -87,18 +111,17 @@ a la clase Node.
 
 Sus métodos son los mismos que en las listas simples, el único cambio es
 que tendremos que definirlos nosotros mismos debido a la diferencia de
-acceso a sus elementos que existe entre ambas.A continuación, se
+acceso a sus elementos que existe entre ambas. A continuación, se
 desarrollarán por separado los métodos principales
 `LinkedList.append()`, `LinkedList.remove()` y `LinkedList.contains()`.
 
 ``` python
 # Este código no es ejecutable
 def append(self, value) -> None:
-    new_node = self.Node(value)
+    new_node =self.Node(value)
 
     if len(self) == 0:
         self.__first = new_node
-        
     else:
         current = self.__first
 
@@ -112,8 +135,8 @@ def append(self, value) -> None:
 
 Lo que se hace aquí es empezar desde el primer nodo avanzando hacia su
 siguiente, esto siempre y cuando `next_node != None`, pues si esto no
-ocurre, significaría que hemos llegado al final de la LinkedList, y como
-estamos en el último Nodo, podremos insertar el nuevo valor (Nodo con
+ocurre significaría que hemos llegado al final de la LinkedList, y como
+estamos en el último nodo, podremos insertar el nuevo valor (nodo con
 dicho valor) como su siguiente.
 
 Si se tiene un atributo en la lista encadenada para referenciar al
@@ -126,7 +149,6 @@ def append(self, value) -> None:
 
     if len(self) == 0:
         self.__first = self.__last = new_node
-        
     else:
         self.__last.next_node = new_node
         self.__last = new_node
@@ -152,7 +174,7 @@ class LinkedList:
         self.__first = None
         self.__len = 0
     
-    def __len__(self)) -> int:
+    def __len__(self) -> int:
         return self.__len
     
     def append(self, value) -> None:
@@ -160,7 +182,6 @@ class LinkedList:
 
         if len(self) == 0:
             self.__first = new_node
-            
         else:
             current = self.__first
 
@@ -179,10 +200,12 @@ if __name__ == "__main__":
     
     print("Longitud de la lista:", len(l))
 ```
+```
+    Longitud de la lista: 10
+```
 
 En el caso del método remove, resultaría en el siguiente código:
 
- 
 ``` python
 # Este código no es ejecutable
 def remove(self, value) -> None:
@@ -211,30 +234,30 @@ def remove(self, value) -> None:
     self.__len -= 1
 ```
 
-Como se peude apreciar, el método para eliminar un elemento es algo más
+Como se puede apreciar, el método para eliminar un elemento es algo más
 complejo que el de insertar elementos al final. Básicamente, lo que se
-está haciendo es recorrer la lista con ayuda de dos Nodos.
+está haciendo es recorrer la lista con ayuda de dos nodos.
 
-Se hace de esta manera para poder \"saltarse\" el Nodo que contiene el
+Se hace de esta manera para poder \"saltarse\" el nodo que contiene el
 valor a eliminar. En el momento en que `current.value == value`, es
 decir, que el valor del segundo de los nodos usados para recorrer, tenga
-el mismo valor que el buscado, su Nodo anterior `(previous)` tendrá como
-siguiente el siguiente al Nodo encontrado `(current)`. Un simil de esto
-sería pensar que construímos un puente por encima del Nodo que posee el
-valor a eliminar, que conecta sus Nodos adyacentes. Se hace así para que
-la referencia a dicho Nodo se pierda, y de esta manera el
-`Garbage Collector` haga su trabajo eliminando el Nodo.
+el mismo valor que el buscado, su nodo anterior `(previous)` tendrá como
+siguiente el siguiente al nodo encontrado `(current)`. Un simil de esto
+sería pensar que construímos un puente por encima del nodo que posee el
+valor a eliminar, que conecta sus nodos adyacentes. Se hace así para que
+la referencia a dicho nodo se pierda, y de esta manera el
+`Garbage Collector` haga su trabajo eliminando el nodo.
 
 Aunque el método planteado no devuelve nada, podría modificarse para que
 lance una excepción en caso de que el valor no se encuentre en la lista,
-o devuelva un booleano para hacernos saber si el Nodo se ha podido
+o devuelva un booleano para hacernos saber si el nodo se ha podido
 eliminar (está contenido en la lista) o no.
 
 [Operación
 ilustrada](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2014/05/Linkedlist_deletion.png)
 
 Ahora tenemos los métodos mínimos necesarios para poder inicializar una
-LinkedList, añadámoslo al código principal.
+LinkedList. Añadamos este método al código principal:
 
 ``` python
 class LinkedList:
@@ -256,7 +279,6 @@ class LinkedList:
 
         if len(self) == 0:
             self.__first = new_node
-            
         else:
             current = self.__first
 
@@ -310,7 +332,7 @@ if __name__ == "__main__":
     Longitud al insertar 10 elementos: 10
     Longitud al eliminar 5 de los elementos: 5
 ```
- 
+
 Por último, el método contains:
 
 ``` python
@@ -338,7 +360,7 @@ def __contains__(self, value) -> bool:
     return self.contains(value)
 ```
 
-Probremos todos los métodos en la base del código:
+Probremos todos los métodos en el código base:
 
 ``` python
 class LinkedList:
@@ -366,7 +388,6 @@ class LinkedList:
 
         if len(self) == 0:
             self.__first = new_node
-            
         else:
             current = self.__first
 
@@ -524,7 +545,6 @@ class LinkedList:
 
         if len(self) == 0:
             self.__first = new_node
-            
         else:
             current = self.__first
 
@@ -593,7 +613,7 @@ if __name__ == "__main__":
 
 #### Métodos avanzados
 
-Otros métodos que se podrían desarrollar son `get()`, `ìnsert()` y
+Otros métodos que se podrían desarrollar son `get()`, `insert()` y
 `replace()`, o la sobrecarga de operadores para conseguir el mismo
 comportamiento que las listas simples mediante los métodos mágicos
 `__getitem__()` y `__setitem__()`.
@@ -601,7 +621,7 @@ comportamiento que las listas simples mediante los métodos mágicos
 Empecemos por el método para optener el elemento en una determinada
 posición. Aunque anteriormente se dijo que los índices no existen como
 tal en las listas encadenadas, sí que se puede obtener el valor numérico
-de la posición del puntero de elementos (Nodo current):
+de la posición del puntero de elementos (nodo current):
 
 ``` python
 # Este código no es ejecutable
@@ -619,15 +639,15 @@ def get(self, index) -> any:
 
     return current.value 
 ```
- 
+
 Lo que se hace es simplemente recorrer los elementos de la lista y
 contando los cambios de puntero que vamos haciendo. Entiéndase por
-cambio de puntero por la operación `current= current.next`. Cuando el
+cambio de puntero a la operación `current= current.next`. Cuando el
 valor númerico de dicho puntero coincida con el índice a buscar, paramos
 el bucle y devolvemos el valor del elemento apuntado por el puntero.
 
 En cuanto a los índices fuera de rango, hay dos maneras de solucionarlo,
-retornando el valor None por defecto o lanzando una excepción
+retornando el valor `None` por defecto o lanzando una excepción
 `IndexError`.
 
 A continuación, se desarrolla la sobrecarga del operardor de acceso a
@@ -638,7 +658,7 @@ elementos, equivalente a `list[index]` con las listas simples.
 def __getitem__(self, index) -> any:
     return self.get(index)
 ```
- 
+
 Por razones obvias, basta con llamar al método definido anteriormente
 pasándole el índice solicitado.
 
@@ -671,18 +691,18 @@ def insert(self, index, value) -> None:
     
     self.__len += 1
 ```
- 
+
 [Operación
 ilustrada](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist_insert_middle.png)
 
 Al igual que en el método para obtener un elemento, se hace uso del
 valor numérico del puntero para localizar la posición en la que hay que
 insertar el nuevo elemento. Cuando dicho valor es igual a `index - 1`,
-tendremos que situar el nuevo elemento entre el Nodo `previous` y
+tendremos que situar el nuevo elemento entre el nodo `previous` y
 `current`.
 
 Seguidamente, el método replace, que no es más que una modificación del
-método `get()`, donde una vez encontrado el Nodo, se actualiza su valor:
+método `get()`, donde una vez encontrado el nodo, se actualiza su valor:
 
 ``` python
 # Este código no es ejecutable
@@ -717,7 +737,7 @@ def __setitem__(self, index, value) -> None:
 Ahora nuestra lista encadenada es mucho más avanzada, y prácticamente
 tendría el mismo funcionamiento que las listas simples. El único cambio
 es el modo en que se realizan sus operaciones de búsqueda, así como la
-manera en la que sus elementos se buscan en memoria.
+manera en la que sus elementos se localizan en memoria.
 
 ``` python
 class LinkedList:
@@ -761,7 +781,6 @@ class LinkedList:
 
         if len(self) == 0:
             self.__first = new_node
-            
         else:
             current = self.__first
 
@@ -902,15 +921,16 @@ if __name__ == "__main__":
 Pues tendríamos dos opciones principales, la más eficiente que es crear
 una OrderedLinkedList, cuyo funcionamiento sería idéntico a la
 LinkedList desarrollada hasta ahora, pero teniendo en cuenta el orden de
-los elementos a la hora se insertarlos. La segunda opción sería marcar
+los elementos a la hora de insertarlos. La segunda opción sería marcar
 la iterablidad ordenada de la LinkedList, permitiéndonos así recorrarla
 en orden siempre que fuera necesario. El problema de este último método
 es que, el orden requerido solo sería visible a la hora de iterar sobre
-la lista, y no en todo momento, pero es una opción presente.
+la lista y no en todo momento, además de un tiempo de ejecucuín muy
+elevado en comparación con otros métodos, pero es una opción presente.
 
 #### Orden marcado por la función `sorted()`
 
-Si no queremos complicarnos mucho, y solo necesitamos recorrer la lista
+Si no queremos complicarnos mucho y solo necesitamos recorrer la lista
 en orden indicado, podemos usar al función `built-in` en Python
 `sorted(iterable, key=key, reverse=reverse)` de la siguiente manera.
 
@@ -931,6 +951,3 @@ print("Después de ordenar", l)
     Antes de ordenar: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
     Después de ordenar [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
-
-### 📫 How to reach me:
-[CALP Discord Server](https://discord.gg/JBQknmBxA9) or [send a message to K4#2381 on Discord](https://discord.com/users/349623600124526602)
