@@ -1,6 +1,6 @@
-### LinkedList
+# LinkedList
 
-#### Introducción
+## Introducción
 
 Una LinkedList o lista encadenada es una estructurda de datos usada para
 almacenar cualquier objeto en memoria con la posibilidad de crecer
@@ -9,7 +9,7 @@ dinámicamente.
 Puede parecer que haga lo mismo que una lista simple de Python, pero
 tiene varias diferencias.
 
-#### LinkedList vs Lista simple
+## LinkedList vs Lista simple
 
 En Python, las listas simples guardan todos sus elementos de manera que
 son contiguos unos de otros en memoria. Para acceder a ellos, se usan
@@ -31,7 +31,7 @@ así sucesivamente, comparable a las cintas de radio cassette, en las que
 la parte visible (reproducible en el caso de las cintas) viene dada por
 un puntero.
 
-#### Casos de uso
+## Casos de uso
 
 Por último, cabe destacar que dependiendo del caso de uso, un tipo de
 lista es más conveniente que la otra.
@@ -52,9 +52,9 @@ caso de la LinkedList, es necesario recorrer todos y cada uno de los
 elementos hasta llegar al final, aunque esto se podría solucionar
 teniendo una referencia al último **nodo**.
 
-#### En resumen:
+## En resumen:
 
-##### ¿Cuándo usar LinkedList?
+### ¿Cuándo usar LinkedList?
 
 -   Alta cantidad de inserciones en posiciones distintas de la última
 
@@ -62,7 +62,7 @@ teniendo una referencia al último **nodo**.
 
 -   Baja o nula demanda de elementos por índices
 
-##### ¿Cuándo usar listas simples?
+### ¿Cuándo usar listas simples?
 
 -   Alta cantidad de inserciones en la última posición
 
@@ -70,7 +70,7 @@ teniendo una referencia al último **nodo**.
 
 -   Alta demanda de elementos por índices
 
-#### Estructura de una LinkedList
+## Estructura de una LinkedList
 
 Este tipo de listas secuenciales tiene los siguientes elementos:
 
@@ -107,7 +107,7 @@ Esta sería la forma báscia y general de una LinkedList. Si quisieramos
 una DoubleLinkedList basta con añadir un atributo `self.__previous_node`
 a la clase Node.
 
-#### Métodos principales de las LinkedList
+## Métodos principales de las LinkedList
 
 Sus métodos son los mismos que en las listas simples, el único cambio es
 que tendremos que definirlos nosotros mismos debido a la diferencia de
@@ -914,9 +914,9 @@ if __name__ == "__main__":
     [-1, -1, -1, -1, -1, 5, 6, 7, 8, 9]
 ```
 
-#### Orden de los elementos
+## Orden de los elementos
 
-#### ¿Que pasa si necesitamos que los elementos estén ordenados?
+## ¿Que pasa si necesitamos que los elementos estén ordenados?
 
 Pues tendríamos dos opciones principales, la más eficiente que es crear
 una OrderedLinkedList, cuyo funcionamiento sería idéntico a la
@@ -928,7 +928,7 @@ es que, el orden requerido solo sería visible a la hora de iterar sobre
 la lista y no en todo momento, además de un tiempo de ejecucuín muy
 elevado en comparación con otros métodos, pero es una opción presente.
 
-#### Orden marcado por la función `sorted()`
+## Orden marcado por la función `sorted()`
 
 Si no queremos complicarnos mucho y solo necesitamos recorrer la lista
 en orden indicado, podemos usar al función `built-in` en Python
