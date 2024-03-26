@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Una LinkedList o lista encadenada es una estructurda de datos usada para
+Una LinkedList o lista encadenada es una estructura de datos usada para
 almacenar cualquier objeto en memoria con la posibilidad de crecer
 dinámicamente.
 
